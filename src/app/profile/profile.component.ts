@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit {
     this.ActiveUser = this.route.snapshot.params['name'];
     this.gitService.getUser(this.ActiveUser).subscribe((user: User) => {
       this.selectedUser = user;
-      console.log(user);
       this.isLoading = true;
     }, error => {
       this.isError =true;

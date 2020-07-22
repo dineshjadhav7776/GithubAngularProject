@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
     this.gitService.getUser(this.ActiveUser).subscribe((user: User) => {
       this.selectedUser = user;
       this.isLoading = true;
-      console.log(this.selectedUser);
     })
     this.gitService.getRepos(this.ActiveUser).subscribe((repos) => {
       this.repos = repos;

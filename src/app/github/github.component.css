@@ -1,7 +1,7 @@
 .searchPadding{
     margin-top: 20px;
 }
-h2,h4{
+h4{
     text-align: center;
     margin-top:10px;
 }
@@ -11,5 +11,9 @@ h2,h4{
 }
 a{
     color: #1e7e34;
+}
+.userListTitle {
+    color: blueviolet;
+    margin-bottom: 15px;
 }
 

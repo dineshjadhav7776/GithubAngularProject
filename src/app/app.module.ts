@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { GithubComponent } from './github/github.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RepodashboardComponent } from './repodashboard/repodashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { RepodashboardComponent } from './repodashboard/repodashboard.component'
     GithubComponent,
     ProfileComponent,
     RepodashboardComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

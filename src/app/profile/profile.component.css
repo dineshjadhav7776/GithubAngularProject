@@ -3,8 +3,17 @@ h5 {
 }
 .viewRepo{
     width: 6.5rem;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 span {
     margin-left: 5px;
+}
+a{
+    color: #237e0c;
+}
+.open_issue {
+    background-color: lightcoral ;
+}
+.repoName {
+    color: #997510;
 }

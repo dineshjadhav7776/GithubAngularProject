@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Routes, Router } from '@angular/router';
 import { GithubService } from '../shared/github.service';
 import { User } from '../models/user'
 
@@ -13,13 +13,20 @@ export class ProfileComponent implements OnInit {
   selectedUser: any = [];
   isLoading: boolean = false;
   repos : any =[];
-  constructor(private route: ActivatedRoute, private gitService: GithubService) { }
+  isError: boolean = false;
+  constructor(private route: ActivatedRoute, 
+              private gitService: GithubService,
+              private routes: Router) { }
 
   ngOnInit(): void {
     this.ActiveUser = this.route.snapshot.params['name'];
     this.gitService.getUser(this.ActiveUser).subscribe((user: User) => {
       this.selectedUser = user;
+      console.log(user);
       this.isLoading = true;
+    }, error => {
+      this.isError =true;
+      this.routes.navigate(['/not-found']);
     })
     this.gitService.getRepos(this.ActiveUser).subscribe((repos) => {
       this.repos = repos;

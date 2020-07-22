@@ -1,6 +1,6 @@
 <div class="container" *ngIf="isLoading">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 repoHeading">
             <h2>Repository dashboard</h2>
         </div>
     </div>
@@ -12,27 +12,42 @@
     </div>
 </div>
 
-<div class="col-md-6" *ngIf="isLoading">
-    <div class="card">
-        <ul class="list-group list-group-flush" *ngFor="let repo of repos">
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-9">
-                        <h2><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h2>
-
-                        <small>(Created days ago)</small>
-                        <p>{{repo.description}}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <span class="badge badge-primary" *ngIf="isLoading">{{commit.length}} Commits</span>
-                        <span class="badge badge-primary">{{repo.watchers}} Watcher</span>
-                        <span class="badge badge-info">{{repo.forks}} Forks</span>
-                        <span class="badge badge-info">{{repo.open_issues}} Open issues</span>
-                        <br>
-                        <a href="{{repo.html_url}}" target="_blank" class="btn btn-outline-info viewRepo"
-                        >View Repo</a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" *ngIf="isLoading">
+            <div class="card">
+                <ul class="list-group list-group-flush" *ngFor="let repo of repos">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h2 class="repoName"><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h2>
+                                <small>(Created days ago)</small>
+                                <p>{{repo.description}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="badge badge-primary commit" *ngIf="isLoading">{{userCommit.length}}
+                                    Commits</span>
+                                <span class="badge badge-primary">{{repo.watchers}} Watcher</span>
+                                <span class="badge badge-info">{{repo.forks}} Forks</span>
+                                <span class="badge badge-info open_issue">{{repo.open_issues}} Open issues</span>
+                                <br>
+                                <a href="{{repo.html_url}}" target="_blank" class="btn btn-outline-info viewRepo">View
+                                    Repo</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 commitsDashboard">
+            <div *ngIf="isLoading">
+                <h4 class="userCommitTitle">Commits</h4>
+                <div class="list-group userList" *ngFor="let commit of userCommit">
+                    <div class="list-group-item">
+                        <span class="commitMessage">{{commit.commit.message}}</span>
+                        <p>{{commit.commit.author.name}} Commited</p>
                     </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>

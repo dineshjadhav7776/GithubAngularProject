@@ -5,3 +5,26 @@ h5{
     width: 6.5rem;
     margin-top: 5px;
 }
+.commit {
+    background-color: rgb(180, 121, 43);
+}
+.open_issue {
+    background-color: lightcoral ;
+}
+a {
+    color: #237e0c;
+}
+.repoHeading {
+    color: #684d00;
+    margin: 20px 0px 20px 0px;
+}
+.commitMessage {
+    color: #343a40e8;
+    font-weight: bold;
+}
+.commitsDashboard {
+    margin-bottom: 30px;
+}
+.userCommitTitle {
+    color: rgb(180, 121, 43);;
+}

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="border container searchPadding">
+                <form action="">
+                    <div class="form-group">
+                        <label>Search GitHub User Names</label>
+                        <input type="text" class="form-control" placeholder="Search GitHub" [(ngModel)]="username"
+                            name="userName" (keyup)="findProfile($event)">
+                    </div>
+                </form>
+            </div>
+            <br>
+            <div class="Loading" *ngIf="!isLoading">
+                <h2>Loading...........</h2>
+            </div>
+            <div *ngIf="isLoading">
+                <h2>User list</h2>
+                <div class="list-group userList" *ngFor="let user of users">
+                    <h5><a [routerLink]="['/github',user.login]" style="cursor: pointer;"
+                            class="list-group-item list-group-item-action userlist">
+                            <img class="list-group-item" src="{{user.avatar_url}}"
+                                class="w3-bar-item w3-circle w3-hide-small" style="width:100px"> {{user.login}}
+                        </a>
+                    </h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 offset 2" *ngIf="!isSelected">
+            <h4>Search users by using username</h4>
+        </div>
+        <div class="col-md-6 offset 2" *ngIf="isSelected && isLoading">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{selectedUser.avatar_url}}" class="img-thumbnail img-fluid">
+                    <hr>
+                </div>
+            </div>
+            <span class="badge badge-primary">{{selectedUser.followers}} Followers </span>
+            <span class="badge badge-secondary">{{selectedUser.following}} Following </span>
+            <span class="badge badge-success">{{selectedUser.public_gists}} Public Gists </span>
+            <span class="badge badge-info">{{selectedUser.public_repos}} Public Repos </span>
+            <hr>
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngIf="selectedUser.name">Name: {{selectedUser.name}}</li>
+                    <li class="list-group-item" *ngIf="selectedUser.location">Lives in: {{selectedUser.location}}</li>
+                    <li class="list-group-item" *ngIf="selectedUser.blog">Blog: {{selectedUser.blog}}</li>
+                    <li class="list-group-item" *ngIf="selectedUser.company">Company: {{selectedUser.company}}</li>
+                </ul>
+                <ul class="list-group list-group-flush" *ngFor="let repo of repos">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></h5>
+
+                                <small>(Created days ago)</small>
+                                <p>{{repo.description}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <span class="badge badge-primary">{{repo.watchers}} Watcher</span>
+                                <span class="badge badge-info">{{repo.forks}} Forks</span>
+                                <span>
+                                    <a [routerLink]="['/github',selectedUser.login,repo.name]"
+                                        class="btn btn-outline-info viewRepo"> View Repo </a>
+                                </span>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

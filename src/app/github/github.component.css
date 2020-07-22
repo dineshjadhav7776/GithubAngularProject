@@ -1,0 +1,15 @@
+.searchPadding{
+    margin-top: 20px;
+}
+h2,h4{
+    text-align: center;
+    margin-top:10px;
+}
+.viewRepo{
+    width: 6.5rem;
+    margin-top: 5px;
+}
+a{
+    color: #1e7e34;
+}
+
